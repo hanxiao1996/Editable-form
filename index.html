@@ -8,17 +8,17 @@
 <body>
 <table class="table table-bordered table-striped">
     <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-        <td>10</td>
-         <td>删除</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>  
+       <td><button class="add">增加</button></td>
     </tr>
     <tr>
         <td>1</td>
@@ -31,7 +31,7 @@
         <td>8</td>
         <td>9</td>
         <td>10</td>
-         <td>删除</td>
+         <td><button class="delete">删除</button></td>
     </tr>
     <tr>
         <td>1</td>
@@ -44,7 +44,7 @@
         <td>8</td>
         <td>9</td>
         <td>10</td>
-         <td>删除</td>
+        <td><button class="delete">删除</button></td>
     </tr>
     <tr>
         <td>1</td>
@@ -57,7 +57,7 @@
         <td>8</td>
         <td>9</td>
         <td>10</td>
-         <td>删除</td>
+        <td><button class="delete">删除</button></td>
     </tr>
     <tr>
         <td>1</td>
@@ -70,7 +70,7 @@
         <td>8</td>
         <td>9</td>
         <td>10</td>
-         <td>删除</td>
+         <td><button class="delete">删除</button></td>
     </tr>
     <tr>
         <td>1</td>
@@ -83,7 +83,7 @@
         <td>8</td>
         <td>9</td>
         <td>10</td>
-         <td>删除</td>
+       <td><button class="delete">删除</button></td>
     </tr>
     <tr>
         <td>1</td>
@@ -96,7 +96,7 @@
         <td>8</td>
         <td>9</td>
         <td>10</td>
-         <td>删除</td>
+        <td><button class="delete">删除</button></td>
     </tr>
     <tr>
         <td>1</td>
@@ -109,7 +109,7 @@
         <td>8</td>
         <td>9</td>
         <td>10</td>
-         <td>删除</td>
+         <td><button class="delete">删除</button></td>
     </tr>
     <tr>
         <td>1</td>
@@ -122,7 +122,7 @@
         <td>8</td>
         <td>9</td>
         <td>10</td>
-         <td>删除</td>
+        <td><button class="delete">删除</button></td>
     </tr>
     <tr>
         <td>1</td>
@@ -135,26 +135,58 @@
         <td>8</td>
         <td>9</td>
         <td>10</td>
-        <td>删除</td>
+        <td><button class="delete">删除</button></td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+       <td><button class="delete">删除</button></td>
     </tr>
 </table>
 </body>
 </html>
 <script>
     let tds=document.querySelectorAll("td");
-   // alert(tds.length);
-    tds.forEach((v,index)=>{
-        console.log(v.innerText)
-        v.ondblclick=function () {
+     let table=document.querySelector("table")
+     let tr=document.querySelectorAll("tr")
+     let add=document.querySelector(".add")
+      let btn=document.querySelectorAll(".delete")
+
+    table.onclick=function(event){ 
+        if(event.target.className==add.className){
+
+            let tr=document.createElement("tr");
+            let str=` <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td><button class="delete">删除</button></td>`;
+            tr.innerHTML=str;
+            table.firstElementChild.append(tr);
+        }
+        else if(event.target.className=="delete"){
+             table.childNodes[1].removeChild(event.target.parentNode.parentNode);     
+    }
+        }
+        table.ondblclick=function (event) {
+
+        	 if(event.target.elementChild=="add"){
+                return;
+        	}
+        	else if(event.target.className==add.className){
+      		return;
+      	}
             let input=document.createElement("input");
-            input.value=v.innerText;
-            v.innerText=" ";
-            v.appendChild(input);
+            input.value=event.target.innerText;
+            event.target.innerText=" ";
+            event.target.appendChild(input);
             input.focus();
             input.onblur=function(){
-               v.innerHTML=this.value;
-            }
+              event.target.innerHTML=this.value;
+	          }  
         }
-    })
-
 </script>
